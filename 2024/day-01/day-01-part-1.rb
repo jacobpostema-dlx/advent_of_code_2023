@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 #!/usr/bin/env ruby
 
-file_path = File.expand_path("../day-01-test_input.txt", __FILE__)
+file_path = File.expand_path("../day-01-input.txt", __FILE__)
 input = File.readlines(file_path)
 @list1 = []
 @list2 = []
@@ -20,11 +20,11 @@ def distance(x, y)
 end
 
 def main
-  count = @list1.size
-  count.times do
-    @sum = @sum + distance(@list1.min, @list2.min)
-    @list1.delete(@list1.min)
-    @list2.delete(@list2.min)
+  @list1.sort!
+  @list2.sort!
+
+  @list1.each_with_index do |element, i|
+      @sum = @sum + distance(element, @list2[i])
   end
 end
 
