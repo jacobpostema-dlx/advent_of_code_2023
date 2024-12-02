@@ -7,12 +7,10 @@ input = File.readlines(file_path)
 def safe?(input)
   line = input.split.map(&:to_i)
   report_lines = line.each_cons(2).map {|first, second| (first - second) }
-  puts report_lines.inspect
-  puts report_lines.all? { |x| x.positive? } || report_lines.all? { |x| x.negative? }
   if report_lines.all? { |x| x.positive? } || report_lines.all? { |x| x.negative? }
     return report_lines.all? { |x| x.abs <= 3 }
   end
-  return false
+  false
 end
 
 safe_reports = 0
