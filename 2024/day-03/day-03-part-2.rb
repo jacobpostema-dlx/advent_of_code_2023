@@ -8,9 +8,20 @@ def mul_sum(mul_list)
   mul_list.map { |mul| mul.scan(/\d{1,3}/).map(&:to_i).reduce(:*) }.sum
 end
 
-mul_list = input.scan('mul\(\d{1,3},\d{1,3}\)')
-input.split("do()")
+parsed_input = input.lines("do()").map {|mul| mul.lines("don't()")}.flatten
+
+enable = true
+mul_list = []
+parsed_input.each do |section|
+  if enable
+    enable = false if section.include?("don't()")
+    mul_list << section.scan(/mul\(\d{1,3},\d{1,3}\)/)
+  else
+    enable = true if section.include?("do()")
+    next
+  end
+end
 
 puts("########## Day 03 2024 ##########")
-puts("Part two solution: #{mul_sum(mul_list)}")
+puts("Part two solution: #{mul_sum(mul_list.flatten)}")
 puts("################################")

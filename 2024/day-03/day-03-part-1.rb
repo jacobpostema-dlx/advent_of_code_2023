@@ -13,4 +13,6 @@ mul_list = input.scan(/mul\(\d{1,3},\d{1,3}\)/)
 
 puts("########## Day 03 2024 ##########")
 puts("Part one solution: #{mul_sum(mul_list)}")
+# to show online solution
+# puts("Part one solution: #{File.read(file_path).scan(/mul\(\d{1,3},\d{1,3}\)/).map { |mul| mul.scan(/\d{1,3}/).map(&:to_i).reduce(:*) }.sum}")
 puts("################################")
