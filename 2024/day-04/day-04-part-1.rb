@@ -28,6 +28,6 @@ sum = coords
 # vertical_xmas = input.map(&:chars).transpose.map(&:join).map { |row| row.scan(/XMAS|SAMX/) }.flatten.compact
 # puts("Part one solution: #{horizontal_xmas.count + vertical_xmas.count}")
 
-puts("########## Day 03 2024 ##########")
+puts("########## Day 04 2024 ##########")
 puts("Part one solution: #{sum}")
 puts("################################")

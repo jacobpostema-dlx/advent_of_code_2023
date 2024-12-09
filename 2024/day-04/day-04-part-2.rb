@@ -20,6 +20,6 @@ MATCH = [%w{M S}, %w{S M}]
 sum = coords.count{ |c| grid[c] == ?A && MATCH.include?([grid[c+(-1-1i)], grid[c+(1+1i)]]) && MATCH.include?([grid[c+(-1+1i)], grid[c+(1-1i)]])}
 
 
-puts("########## Day 03 2024 ##########")
-puts("Part one solution: #{sum}")
+puts("########## Day 04 2024 ##########")
+puts("Part two solution: #{sum}")
 puts("################################")
