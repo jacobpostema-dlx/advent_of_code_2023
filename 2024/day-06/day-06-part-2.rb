@@ -19,26 +19,30 @@ width.times do |x|
   end
 end
 
-def path_finding(grid, pos)
+def path_finding(grid, pos, obstruction = nil)
   visited = Set.new
   char = grid[pos]
 
   while grid[pos] != nil
-    visited << pos
+    return false if visited.include?([pos, char])
+
+    visited << [pos, char]
     next_pos = pos + DIR[char]
-    puts next_pos.inspect
-    while grid[next_pos] == ?#
+    while grid[next_pos] == ?# || next_pos == obstruction
       char = TURN[char]
       next_pos = pos + DIR[char]
     end
 
     pos = next_pos
   end
-  puts visited.inspect
-  visited
+  visited.map(&:first).uniq
 end
 
+sum = path_finding(grid, start.dup).count do |test_pos|
+  next false if test_pos == start
+  path_finding(grid, start, test_pos) == false
+end
 
 puts("########## Day 06 2024 ##########")
-puts("Part one solution: #{path_finding(grid, start).size}")
+puts("Part two solution: #{sum}")
 puts("################################")
