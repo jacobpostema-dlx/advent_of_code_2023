@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 #!/usr/bin/env ruby
 
-file_path = File.expand_path("../day-$-input.txt", __FILE__)
+file_path = File.expand_path("../day-06-input.txt", __FILE__)
 input = File.read(file_path).split("\n")
 width = input.size
 height = input[0].size
 grid = {}
 coords = []
 start = Complex(0,0)
+DIR = { "^" => 0-1i, "v" => 0+1i, "<" => -1+0i, ">" => 1+0i }
+TURN = { "^" => ">", ">" => "v", "v" => "<", "<" => "^" }
 
 width.times do |x|
   height.times do |y|
@@ -17,7 +19,24 @@ width.times do |x|
   end
 end
 
+def path_finding(grid, pos)
+  visited = Set.new
+  char = grid[pos]
+
+  while grid[pos] != nil
+    visited << pos
+    next_pos = pos + DIR[char]
+    while grid[next_pos] == ?#
+      char = TURN[char]
+      next_pos = pos + DIR[char]
+    end
+
+    pos = next_pos
+  end
+  visited
+end
+
 
 puts("########## Day 06 2024 ##########")
-puts("Part one solution: #{sum}")
+puts("Part one solution: #{path_finding(grid, start).size}")
 puts("################################")
