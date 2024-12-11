@@ -5,7 +5,6 @@ file_path = File.expand_path("../day-07-input.txt", __FILE__)
 input = File.read(file_path).scan(/(\d+): (.*)/)
 
 OPERATORS = %i[+ *]
-puts input.inspect
 calibration = input.map{ |r,n| [r.to_i, n.split.map(&:to_i)]}
 
 def find_equations(solution, ops, values, partial)
