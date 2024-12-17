@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ffi (1.17.0-x86_64-darwin)
+    z3 (0.0.20230311)
+      ffi (~> 1.9)
+
+PLATFORMS
+  x86_64-darwin-22
+
+DEPENDENCIES
+  z3
+
+BUNDLED WITH
+   2.4.1
